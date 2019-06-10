@@ -1,0 +1,14 @@
+﻿cl : Línea de comandos warning D9035: La opción 'Gm' está desusada y se quitará en próximas versiones
+  Omitiendo... (no se detectaron cambios relevantes)
+  zJuego.cpp
+  TableroGL.cpp
+  Tablero.cpp
+  Mundo.cpp
+  ListaHormigas.cpp
+  Interaccion.cpp
+  Hormiga.cpp
+  Coordinador.cpp
+  Celda.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(1216,5): warning MSB8012: TargetPath(C:\Users\usuario\Desktop\clase\info\trabajo info\bin\Pang.exe) no coincide con el valor de la propiedad OutputFile de Linker (C:\Users\usuario\Desktop\clase\info\trabajo info\Debug\Pang.exe). Esto puede hacer que el proyecto no se compile correctamente. Para solucionar este problema, asegúrese de que los valores de propiedad $(OutDir), $(TargetName) y $(TargetExt) coinciden con el valor especificado en %(Link.OutputFile).
+Celda.obj : warning LNK4075: se omite '/EDITANDCONTINUE' debido a la especificación '/INCREMENTAL:NO'
+  Pang.vcxproj -> C:\Users\usuario\Desktop\clase\info\trabajo info\bin\Pang.exe
