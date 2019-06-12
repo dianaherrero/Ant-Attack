@@ -71,14 +71,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else { celdaprohibida[h2.columna][h2.fila] = 2; }//si es negra la prohibes
 			}
-			else if ((h2.direccion.x == -1&& tab.tabla[h2.columna][h2.fila].blanca)|| (h2.direccion.x == 1 && !tab.tabla[h2.columna][h2.fila].blanca)) {//irá hacia arriba
+			else if ((h2.direccion.x == -1&& tab.tabla[h2.columna][h2.fila].blanca)|| (h2.direccion.x == 1 && !tab.tabla[h2.columna][h2.fila].blanca)&&h2.fila<(tab.m-1)) {//irá hacia arriba
 				if(!tab.tabla[h2.columna][h2.fila+1].blanca){
 					tab.tabla[h2.columna][h2.fila + 1].blanca = !tab.tabla[h2.columna][h2.fila + 1].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h2.columna][h2.fila+1] = 2;
 			}
-			else {		//irá al de abajo
+			else if (h2.fila>0){		//irá al de abajo
 				if (tab.tabla[h2.columna][h2.fila - 1].blanca) {
 					tab.tabla[h2.columna][h2.fila - 1].blanca = !tab.tabla[h2.columna][h2.fila - 1].blanca;
 					return 1;
@@ -102,14 +102,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else { celdaprohibida[h2.columna][h2.fila] = 2; }//si es negra la prohibes
 			}
-			else if ((h2.direccion.x == -1 && tab.tabla[h2.columna][h2.fila].blanca) || (h2.direccion.x == 1 && !tab.tabla[h2.columna][h2.fila].blanca)) {//irá hacia arriba
+			else if ((h2.direccion.x == -1 && tab.tabla[h2.columna][h2.fila].blanca) || (h2.direccion.x == 1 && !tab.tabla[h2.columna][h2.fila].blanca&&h2.fila<(tab.m-1))) {//irá hacia arriba
 				if (tab.tabla[h2.columna][h2.fila + 1].blanca) {
 					tab.tabla[h2.columna][h2.fila + 1].blanca = !tab.tabla[h2.columna][h2.fila + 1].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h2.columna][h2.fila + 1] = 2;
 			}
-			else {		//irá al de abajo
+			else if (h2.fila>0){		//irá al de abajo
 				if (!tab.tabla[h2.columna][h2.fila - 1].blanca) {
 					tab.tabla[h2.columna][h2.fila - 1].blanca = !tab.tabla[h2.columna][h2.fila - 1].blanca;
 					return 1;
@@ -133,14 +133,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else celdaprohibida[h2.columna][h2.fila] = 2;	//si es blanca la prohibes
 			}
-			else if ((h2.direccion.y == -1 && tab.tabla[h2.columna][h2.fila].blanca) || (h2.direccion.y == 1 && !tab.tabla[h2.columna][h2.fila].blanca)) {//irá hacia la izquierda
+			else if (((h2.direccion.y == -1 && tab.tabla[h2.columna][h2.fila].blanca) || (h2.direccion.y == 1 && !tab.tabla[h2.columna][h2.fila].blanca)&&h2.columna>0)) {//irá hacia la izquierda
 				if (!tab.tabla[h2.columna-1][h2.fila].blanca) {
 					tab.tabla[h2.columna-1][h2.fila].blanca = !tab.tabla[h2.columna-1][h2.fila].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h2.columna -1][h2.fila] = 2;
 			}
-			else {		//irá a la derecha
+			else if(h2.columna<(tab.l-1)){		//irá a la derecha
 				if (tab.tabla[h2.columna+1][h2.fila].blanca) {
 					tab.tabla[h2.columna+1][h2.fila].blanca = !tab.tabla[h2.columna+1][h2.fila].blanca;
 					return 1;
@@ -164,14 +164,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else { celdaprohibida[h2.columna][h2.fila] = 2; }//si es negra la prohibes
 			}
-			else if ((h2.direccion.y == -1 && tab.tabla[h2.columna][h2.fila].blanca) || (h2.direccion.y == +1 && !tab.tabla[h2.columna][h2.fila].blanca)) {//irá hacia la izquierda
+			else if (((h2.direccion.y == -1 && tab.tabla[h2.columna][h2.fila].blanca) || (h2.direccion.y == +1 && !tab.tabla[h2.columna][h2.fila].blanca))&&h2.columna>0) {//irá hacia la izquierda
 				if (tab.tabla[h2.columna - 1][h2.fila].blanca) {
 					tab.tabla[h2.columna - 1][h2.fila].blanca = !tab.tabla[h2.columna - 1][h2.fila].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h2.columna-1][h2.fila] = 2;
 			}
-			else {		//irá a la derecha
+			else if(h2.columna<(tab.l-1)){		//irá a la derecha
 				if (!tab.tabla[h2.columna + 1][h2.fila].blanca) {
 					tab.tabla[h2.columna + 1][h2.fila].blanca = !tab.tabla[h2.columna + 1][h2.fila].blanca;
 					return 1;
@@ -182,7 +182,7 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 		}
 
 		//para dar aún más preferencia a la defensa
-		if (p != 0) 	p--;
+		//if (p != 0) 	p--;
 
 
 		//comprobamos si la hormiga del jugador(h1) está en peligro inmediato
@@ -201,14 +201,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else celdaprohibida[h1.columna][h1.fila] = 1;	//si es blanca la prohibes
 			}
-			else if ((h1.direccion.x == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.x == 1 && !tab.tabla[h1.columna][h1.fila].blanca)) {//irá hacia arriba
+			else if (((h1.direccion.x == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.x == 1 && !tab.tabla[h1.columna][h1.fila].blanca))&&h1.fila<(tab.m-1)) {//irá hacia arriba
 				if (tab.tabla[h1.columna][h1.fila + 1].blanca) {
 					tab.tabla[h1.columna][h1.fila + 1].blanca = !tab.tabla[h1.columna][h1.fila + 1].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h1.columna][h1.fila + 1] = 2;
 			}
-			else {		//irá al de abajo
+			else if(h1.fila>0){		//irá al de abajo
 				if (!tab.tabla[h1.columna][h1.fila - 1].blanca) {
 					tab.tabla[h1.columna][h1.fila - 1].blanca = !tab.tabla[h1.columna][h1.fila - 1].blanca;
 					return 1;
@@ -232,14 +232,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else celdaprohibida[h1.columna][h1.fila] = 1;	//si es blanca la prohibes
 			}
-			else if ((h1.direccion.x == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.x == 1 && !tab.tabla[h1.columna][h1.fila].blanca)) {//irá hacia arriba
+			else if (((h1.direccion.x == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.x == 1 && !tab.tabla[h1.columna][h1.fila].blanca))&&h1.fila<(tab.m-1)) {//irá hacia arriba
 				if (!tab.tabla[h1.columna][h1.fila + 1].blanca) {
 					tab.tabla[h1.columna][h1.fila + 1].blanca = !tab.tabla[h1.columna][h1.fila + 1].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h1.columna][h1.fila + 1] = 2;
 			}
-			else {		//irá al de abajo
+			else if(h1.fila>0){		//irá al de abajo
 				if (tab.tabla[h1.columna][h1.fila - 1].blanca) {
 					tab.tabla[h1.columna][h1.fila - 1].blanca = !tab.tabla[h1.columna][h1.fila - 1].blanca;
 					return 1;
@@ -263,14 +263,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else { celdaprohibida[h1.columna][h1.fila] = 1; }//si es negra la prohibes
 			}
-			else if ((h1.direccion.y == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.y == 1 && !tab.tabla[h1.columna][h1.fila].blanca)) {//irá hacia la izquierda
+			else if (((h1.direccion.y == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.y == 1 && !tab.tabla[h1.columna][h1.fila].blanca))&&h1.columna>0) {//irá hacia la izquierda
 				if (tab.tabla[h1.columna - 1][h1.fila].blanca) {
 					tab.tabla[h1.columna - 1][h1.fila].blanca = !tab.tabla[h1.columna - 1][h1.fila].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h1.columna - 1][h1.fila] = 2;
 			}
-			else {		//irá a la derecha
+			else if(h1.columna<tab.l-1) {		//irá a la derecha
 				if (!tab.tabla[h1.columna + 1][h1.fila].blanca) {
 					tab.tabla[h1.columna + 1][h1.fila].blanca = !tab.tabla[h1.columna + 1][h1.fila].blanca;
 					return 1;
@@ -294,14 +294,14 @@ bool Interaccion::Seleccion(Tablero &tab, Hormiga const &h1, Hormiga const &h2, 
 				}
 				else celdaprohibida[h1.columna][h1.fila] = 1;	//si es blanca la prohibes
 			}
-			else if ((h2.direccion.y == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.y == +1 && !tab.tabla[h1.columna][h1.fila].blanca)) {//irá hacia la izquierda
+			else if (((h2.direccion.y == -1 && tab.tabla[h1.columna][h1.fila].blanca) || (h1.direccion.y == +1 && !tab.tabla[h1.columna][h1.fila].blanca))&&h1.columna>0) {//irá hacia la izquierda
 				if (!tab.tabla[h1.columna - 1][h1.fila].blanca) {
 					tab.tabla[h1.columna - 1][h1.fila].blanca = !tab.tabla[h1.columna - 1][h1.fila].blanca;
 					return 1;
 				}
 				else	celdaprohibida[h1.columna - 1][h1.fila] = 2;
 			}
-			else {		//irá a la derecha
+			else if(h1.columna<tab.l-1){		//irá a la derecha
 				if (tab.tabla[h1.columna + 1][h1.fila].blanca) {
 					tab.tabla[h1.columna + 1][h1.fila].blanca = !tab.tabla[h1.columna + 1][h1.fila].blanca;
 					return 1;
